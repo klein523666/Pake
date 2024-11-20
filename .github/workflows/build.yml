@@ -1,0 +1,32 @@
+name: Build App
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Pake CLI
+        run: npm install -g pake-cli
+
+      - name: Build Application
+        run: pake https://my.zjgsu.edu.cn/personal-center --name 商大助手 --icon ./zjgsu_icon.png
+
+      - name: Upload built application
+        uses: actions/upload-artifact@v2
+        with:
+          name: 商大助手
+          path: ./dist
