@@ -23,10 +23,11 @@ jobs:
         run: npm install -g pake-cli
 
       - name: Build Application
-        run: pake https://my.zjgsu.edu.cn/personal-center --name 商大助手 --icon ./zjgsu_icon.png
+        run: pake https://my.zjgsu.edu.cn/personal-center --name 商大助手 --icon ./icon.png
 
       - name: Upload built application
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: 商大助手
           path: ./dist
+
