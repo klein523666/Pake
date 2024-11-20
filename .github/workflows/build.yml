@@ -12,22 +12,17 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Install Pake CLI
         run: npm install -g pake-cli
 
       - name: Build Application
-        run: pake https://my.zjgsu.edu.cn/personal-center --name 商大助手 --icon ./icon.png
+        run: pake https://my.zjgsu.edu.cn/personal-center --name 商大助手
 
-      - name: Upload built application
-        uses: actions/upload-artifact@v3
-        with:
-          name: 商大助手
-          path: ./dist
-
+      - name: Upload built appli
